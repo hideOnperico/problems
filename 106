@@ -1,0 +1,217 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstring>
+
+using namespace std;
+
+int main()
+{
+    int resultado;
+
+    while (true)
+    {
+        long n;
+        cin >> n;
+
+        if (n == 0)
+        {
+            cout << "0" << endl;
+            break;
+        }
+
+        int cantidadDigitos = (int)log10(n) + 1;
+
+        if (cantidadDigitos <= 8)
+        {
+            string cadena = to_string(n);
+            string cadenaIvertida;
+            resultado = 0;
+            int limite = 8 - cantidadDigitos;
+
+            for (int i = 0; i < cadena.length(); i++)
+            {
+                cadenaIvertida = cadena[i] + cadenaIvertida;
+            }
+            
+
+            for (int i = 0; i < limite; i++)
+            {
+                cadena = "0" + cadena;
+            }
+
+            int ultimoDigito;
+
+            for (int i = 1; i < cadenaIvertida.length(); i++)
+            {
+
+                int digito = cadenaIvertida[i] - '0';
+
+                if (i % 2 == 0)
+                {
+                    resultado = resultado + digito;
+                }
+                else
+                {
+                    resultado = resultado + digito * 3;
+                }
+            }
+
+            for (int i = 0; i < cadena.length(); i++)
+            {
+                ultimoDigito = cadena[i] - '0';
+            }
+
+            resultado = resultado + ultimoDigito;
+
+            if (resultado % 10 == 0)
+            {
+                cout << "yes" << endl;
+                
+            }
+            else
+            {
+                cout << "No" << endl;
+                
+            }
+        }
+        else if (cantidadDigitos > 8 && cantidadDigitos <= 13)
+        {
+            resultado = 0;
+            int limite = 13 - cantidadDigitos;
+            string cadena = to_string(n);
+            
+            int ultimoDigito;
+            string cadenaIvertida;
+            for (int i = 0; i < cadena.length(); i++)
+            {
+                cadenaIvertida = cadena[i] + cadenaIvertida;
+            }
+
+            for (int i = 0; i < limite; i++)
+            {
+                cadena = "0" + cadena;
+            }
+
+            for (int i = 1; i < cadena.length(); i++)
+            {
+
+                int digito = cadenaIvertida[i] - '0';
+
+                if (i % 2 == 0)
+                {
+                    resultado = resultado + digito;
+                }
+                else
+                {
+                    resultado = resultado + digito * 3;
+                }
+            }
+
+            for (int i = 0; i < cadena.length(); i++)
+            {
+                ultimoDigito = cadena[i] - '0';
+            }
+            
+            
+
+            resultado = resultado + ultimoDigito;
+            string pais = "Desconocido";
+
+            if (resultado % 10 == 0)
+            {
+                int primerDigito = cadena[0] - '0';
+                int segundoDigito = cadena[1] - '0';
+                int tercerDigito = cadena[2] - '0';
+               
+                
+                
+                
+                switch (primerDigito) {
+        case 0:
+            pais = "EEUU";
+            break;
+        case 3:
+        
+            if(segundoDigito == 8)
+            {
+                if(tercerDigito == 0)
+                {
+                    pais = "Bulgaria";
+                    
+                }
+                else
+                {
+                    pais = "Desconocido";
+                }
+            }else{
+                pais = "Desconocido";
+            }
+            break;
+        case 5:
+             if(segundoDigito == 0)
+             {
+                 pais = "Inglaterra";
+                 
+             }
+             else
+             {
+                 pais = "Desconocido";
+             }
+            break;
+            
+        case 7:
+            if(segundoDigito == 0){
+            
+                pais = "Noruega";
+            }
+            else if(segundoDigito == 5){
+                if(tercerDigito == 9){
+                    pais = "Venezuela";
+                    
+                }
+            }
+            else
+            {
+                pais = "Desconocido";
+            }
+            break;
+        case 8:
+            if(segundoDigito == 5){
+                if(tercerDigito == 0){
+                    pais = "Cuba";
+                }else{
+                    pais = "Desconocido";
+                }
+                
+                
+            }
+            else if(segundoDigito == 9){
+                if(tercerDigito == 0){
+                    pais = "India";
+                }
+                else{
+                    pais = "Desconocido";
+                }
+            }
+            else{
+                pais = "Desconocido";
+            }
+            break;
+        default:
+            pais = "Desconocido";
+            break;
+            
+    }  
+    cout << "Si " + pais<< "\n";
+            }
+            else
+            {
+                cout << "No"<<"\n";
+                
+            }
+        }
+    }
+
+    return 0;
+}
